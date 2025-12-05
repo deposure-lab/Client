@@ -1,0 +1,46 @@
+{
+  "name": "deposure-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.13.1",
+    "boxen": "^8.0.1",
+    "chalk": "^4.1.2",
+    "cli-cursor": "^5.0.0",
+    "cli-table3": "^0.6.5",
+    "express": "^5.1.0",
+    "formidable": "^3.5.4",
+    "inquirer": "^12.10.0",
+    "js-yaml": "^4.1.0",
+    "loading-cli": "^1.1.2",
+    "ora": "^5.4.1",
+    "path-to-regexp": "^8.3.0",
+    "pkg": "^5.8.1",
+    "ws": "^8.18.3"
+  },
+  "pkg": {
+    "scripts": "index.js",
+    "assets": [
+      "node_modules/axios/**/*"
+    ],
+    "targets": [
+      "node18-linux-x64",
+      "node18-linux-arm64",
+      "node18-macos-arm64",
+      "node18-macos-x64",
+      "node18-win-x64"
+    ]
+  }
+}
