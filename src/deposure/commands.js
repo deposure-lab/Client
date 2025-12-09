@@ -74,18 +74,22 @@ async function createApplication() {
         ? 'C:/deposure/deposure.yml'
         : '/etc/deposure/deposure.yml';
 
-    let config = {};
+    const dir = path.dirname(configPath);
+
+    if (!fs.existsSync(dir)) {
+        console.log(`Directory "${dir}" not found. Creating...`);
+        fs.mkdirSync(dir, { recursive: true });
+    }
 
     if (!fs.existsSync(configPath)) {
         console.log(`Config file not found. Creating new one at: ${configPath}`);
         fs.writeFileSync(configPath, yaml.dump({}), 'utf8');
     }
 
+    let config = {};
     try {
         const content = fs.readFileSync(configPath, 'utf8');
-        if (content.trim()) {
-            config = yaml.load(content) || {};
-        }
+        if (content.trim()) config = yaml.load(content) || {};
     } catch (err) {
         console.error('Error reading configuration, using empty default config.');
     }
