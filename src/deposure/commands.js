@@ -14,6 +14,29 @@ function ensureSudo() {
     }
 }
 
+function printHelp() {
+    console.log(`
+Usage:
+  deposure <command> [options]
+
+Commands:
+  start <app>        Start application by name
+  stop <app>         Stop application by name
+  enable <app>       Enable application on system startup
+  disable <app>      Disable application on system startup
+  status             Show system and applications status
+  create             Create a new application interactively
+  add-token <token>  Save authentication token
+
+Description:
+  Deposure CLI allows you to manage your applications, create new ones,
+  enable or disable them on system startup, and check status of the service.
+
+  If you run a command without required arguments, the CLI will explain
+  what you need to provide.
+`);
+}
+
 async function handleCommandsCLI(config) {
     configuration = config;
 
@@ -54,7 +77,8 @@ async function handleCommandsCLI(config) {
             break;
             
         default:
-            console.log('Available commands: start, stop, enable, disable, status, create, add-token');
+            console.log(`Unknown command: ${command}`);
+            printHelp();
             break;
     }
 }
