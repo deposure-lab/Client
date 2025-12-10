@@ -46,7 +46,7 @@ function LoadConfiguration(configPath = "") {
             responseHeaderAdd: app.response_header_add || {}
         };
     }
-    
+
     return {
         version: config.version,
         token: config.token,
@@ -101,7 +101,7 @@ function ApplicationStop(name) {
 }
 
 function ApplicationEnable(name) {
-
+ 
 }
 
 function ApplicationDisable(name) {
