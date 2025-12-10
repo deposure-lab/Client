@@ -76,24 +76,8 @@ async function RunConnection(appId, token, scheme = 'http', addr = '80', inspect
         forwarding: { local: `${LOCAL_BASE}`, tunnel: '' }
     };
 
-    if (inspect) {
-        Inspect(metrics, appId, DATACENTER_URL, BEST_LATENCY_DOMAIN, TUNNEL_WS, LOCAL_BASE);
-    }
-
-    return StartWebsocket({ appId, TUNNEL_WS, LOCAL_BASE, BEST_LATENCY_DOMAIN, token, metrics });
+    return StartWebsocket({ appId, TUNNEL_WS, LOCAL_BASE, BEST_LATENCY_DOMAIN, token, metrics, inspect  });
 }
 
-function Inspect(metrics, NORMALIZED_NAME, DATACENTER_URL, BEST_LATENCY_DOMAIN, TUNNEL_WS, LOCAL_BASE) {
-    const interval = setInterval(() => {
-        if (!metrics.is_alive) {
-            clearInterval(interval);
-            return;
-        }
-
-        console.clear();
-        console.log(`deposure client — forwarding ${metrics.forwarding.tunnel || 'unknown'} -> ${LOCAL_BASE}`);
-        console.log(`latency: ${metrics.latency} ms, requests: ${metrics.totalRequests}`);
-    }, 1500);
-}
 
 module.exports = { RunConnection };
