@@ -46,7 +46,7 @@ function LoadConfiguration(configPath = "") {
             responseHeaderAdd: app.response_header_add || {}
         };
     }
-
+    
     return {
         version: config.version,
         token: config.token,
@@ -60,6 +60,11 @@ function LoadConfiguration(configPath = "") {
 function ApplicationStart(name, configuration) {
     if (!configuration) {
         console.error('No configuration provided. Cannot start application.');
+        return;
+    }
+
+    if (configuration.token === '') {
+        console.log('[ ERROR ] Authentication token is missing. Add it using: ./[binary_name] add-token [your_token]');
         return;
     }
 
