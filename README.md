@@ -10,74 +10,26 @@ This client is intended to run on **Linux** or **Windows**, and is designed to o
 
 ---
 
-## 🚀 Features
-
-* Create and manage Deposure application entries
-* Manage service state (start/stop/enable/disable)
-* Inspect connected applications
-* Fully guided setup wizard (`prepair`)
-* YAML‑based configuration stored in:
-
-  * **Linux:** `/etc/deposure/deposure.yml`
-  * **Windows:** `C:/deposure/deposure.yml`
-
----
-
 ## 📦 Installation
 
-Clone the repository:
+Download Binary File that support your OS and Architecture for e.g: deposure-client-linux-x64
 
-```bash
-git clone https://github.com/yourname/deposure-client.git
-cd deposure-client
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
+## 🧰 Setup
 
 Run the client:
 
 ```bash
-node index.js <command>
+./[binary_name] <command> 
 ```
 
-> ⚠️ **On Linux, always run with sudo:**
-
-```bash
-sudo node index.js <command>
-```
-
----
-
-## 🧰 Available Commands
-
-### `prepair`
-
-The first command you should run.
-It will:
-
-1. Create `/etc/deposure` (or `C:/deposure`) if missing
-2. Create `deposure.yml`
-3. Ask for your **API Token** (found in Deposure Dashboard → *REST API / API Tokens*)
-4. Guide you through configuring your **first application**
-
-Run:
-
-```bash
-sudo node index.js prepair
-```
-
----
+Available Commands:
 
 ### `create`
 
 Adds a new application entry to the configuration.
 
 ```bash
-sudo node index.js create
+sudo ./[binary_name] create
 ```
 
 You will be asked:
@@ -95,7 +47,7 @@ You will be asked:
 Updates the authentication token in the configuration.
 
 ```bash
-sudo node index.js add-token YOUR_TOKEN_HERE
+sudo ./[binary_name]  add-token YOUR_TOKEN_HERE
 ```
 
 Token is used to authenticate your device with Deposure.
@@ -109,7 +61,7 @@ Get it from:
 Starts application tunneling and inspection handlers.
 
 ```bash
-sudo node index.js start myApp
+sudo ./[binary_name] start myApp
 ```
 
 ### `stop <app>`
@@ -117,7 +69,7 @@ sudo node index.js start myApp
 Stops the application handler.
 
 ```bash
-sudo node index.js stop myApp
+sudo ./[binary_name] stop myApp
 ```
 
 ### `enable <app>` / `disable <app>`
@@ -125,8 +77,8 @@ sudo node index.js stop myApp
 Enables or disables the application in configuration.
 
 ```bash
-sudo node index.js enable myApp
-sudo node index.js disable myApp
+sudo ./[binary_name]  enable myApp
+sudo ./[binary_name]  disable myApp
 ```
 
 ### `status`
@@ -134,28 +86,7 @@ sudo node index.js disable myApp
 Prints the current status of all registered applications.
 
 ```bash
-sudo node index.js status
-```
-
----
-
-## 📁 Configuration File Structure
-
-The config file is stored as YAML and looks like:
-
-```yaml
-version: "3"
-token: "YOUR_TOKEN_HERE"
-region: "default"
-console_ui: true
-applications:
-  myApp:
-    appId: "UUID-HERE"
-    addr: "3000"
-    scheme: "http"
-    inspect: true
-    authorization: ""
-meta: {}
+sudo ./[binary_name]  status
 ```
 
 ---
@@ -184,7 +115,4 @@ MIT License — free to use, modify, and distribute.
 
 ---
 
-## ❤️ Thanks
 
-This client is built to make Deposure easier and more powerful for developers.
-If you have suggestions, improvements, or requests—open an issue!
