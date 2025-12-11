@@ -23,11 +23,13 @@ async function Inspect(TUNNEL_WS, LOCAL_BASE, public_url) {
     };
 
     const regions = {
-        "wss://wss-sfo2-prod.deposure.com": "sfo2 (San Francisco)"
+        "wss://wss-sfo2-prod.deposure.com": "sfo2 (San Francisco)",
+        "wss://wss-01-eu.deposure.com": "fra1 (Frankfurt)"
     };
 
     const urls = {
-        "wss://wss-sfo2-prod.deposure.com": "https://sfo2-prod.deposure.com"
+        "wss://wss-sfo2-prod.deposure.com": "https://sfo2-prod.deposure.com",
+        "wss://wss-01-eu.deposure.com": "https://fra1-prod.deposure.com"
     };
 
     const regionName = regions[TUNNEL_WS] || "Unknown Region";
