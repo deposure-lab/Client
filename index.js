@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const { handleCommandsCLI } = require('./src/deposure/commands.js');
-const { LoadConfiguration } = require('./src/deposure/utils.js');
+const cli_commands = require('./src/cli/commands.cli.js');
+const core_configuration = require('./src/core/configuration.core.js');
 
-const config = LoadConfiguration();
-handleCommandsCLI(config);
+const config = core_configuration.load_configuration();
+cli_commands.handler(config);
